@@ -30,6 +30,26 @@ AFPSProjectile::AFPSProjectile()
 		ProjectileMovementComponent->Bounciness = 0.3f;
 		ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
 	}
+
+	if (!ProjectileMeshComponent)
+	{
+		ProjectileMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMeshComponent"));
+		static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/Sphere.Sphere'"));
+		if (Mesh.Succeeded())
+		{
+			ProjectileMeshComponent->SetStaticMesh(Mesh.Object);
+		}
+	}
+
+	/*static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("Material'/Game/BulletMat.BulletMat'"));
+	if (Material.Succeeded())
+	{
+		ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
+	}
+	ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
+	ProjectileMeshComponent->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
+	ProjectileMeshComponent->SetupAttachment(RootComponent);*/
+
 	/*static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Game/Geometry/Meshes/1M_Cube.1M_Cube'"));
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("NomMesh"));

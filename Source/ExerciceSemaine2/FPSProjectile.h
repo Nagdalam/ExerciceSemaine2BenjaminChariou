@@ -34,8 +34,10 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projectile)
 		UStaticMeshComponent* ProjectileMeshComponent;
 
-	UPROPERTY(VisibleAnywhere)
-		UStaticMeshComponent* StaticMesh;
+	UPROPERTY(VisibleDefaultsOnly, Category = Movement)
+		UMaterialInstanceDynamic* ProjectileMaterialInstance;
+	//UPROPERTY(VisibleAnywhere)
+	//	UStaticMeshComponent* StaticMesh;
 
 	void FireInDirection(const FVector& ShootDirection);
 };

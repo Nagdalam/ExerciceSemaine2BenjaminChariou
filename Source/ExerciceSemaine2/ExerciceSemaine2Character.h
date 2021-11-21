@@ -39,8 +39,13 @@ public:
 	UFUNCTION()
 		void TakeDamage(int32 damageTaken);
 
+
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+		TSubclassOf<class AFPSProjectile> ProjectileClass;
+
 	UFUNCTION()
 		void Fire();
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		FVector MuzzleOffset;
@@ -55,8 +60,6 @@ public:
 
 protected:
 
-	UPROPERTY(EditDefaultsOnly, Category = Projectile)
-		TSubclassOf<class AFPSProjectile> ProjectileClass;
 
 	void Raycast();
 	/** Resets HMD orientation in VR. */
